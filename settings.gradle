@@ -1,2 +1,3 @@
 rootProject.name = 'spring-framework'
 
+include 'transaction-propagation'
