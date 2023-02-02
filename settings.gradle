@@ -1,3 +1,4 @@
 rootProject.name = 'spring-framework'
 
 include 'transaction-propagation'
+include 'application-event'
