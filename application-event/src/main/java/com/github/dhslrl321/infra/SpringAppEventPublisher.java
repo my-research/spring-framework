@@ -5,6 +5,7 @@ import com.github.dhslrl321.events.EventsPublisher;
 import com.github.dhslrl321.events.OrderedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component
