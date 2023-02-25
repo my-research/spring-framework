@@ -10,11 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class UserListener implements EventsListener<SignedUpEvent> {
+public class User2Listener implements EventsListener<SignedUpEvent> {
     @Override
     @EventListener
     public void listen(SignedUpEvent event) {
-        log.info("----userListener------------{}", event.toString());
-
+        log.info("----user2Listener------------{}", event.toString());
     }
 }
