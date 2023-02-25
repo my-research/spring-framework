@@ -1,6 +1,8 @@
 # Transaction
 
-- 선언적 트랜잭션
+- 두가지 문제 상황을 재현함
+  - 내부 Transactional 메서드 호출하면 rollback 이 되지 않는 문제
+  - 서로 다른 service 를 호출할 때 예외를 catch 해도 rollback 이 되는 상황 (RuntimeException)
 
 # Transactional
 

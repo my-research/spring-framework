@@ -1,4 +1,4 @@
-package com.dhslrl321.tx.basic;
+package com.dhslrl321.tx.a1;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,8 +10,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SimpleService {
 
-    private final FirstEntityRepository firstRepository;
-    private final SecondEntityRepository secondRepository;
+    private final FirstRepository firstRepository;
+    private final SecondRepository secondRepository;
 
     public List<FirstEntity> findAll() {
         return firstRepository.findAll();

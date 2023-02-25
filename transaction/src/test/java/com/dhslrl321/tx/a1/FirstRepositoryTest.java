@@ -1,4 +1,4 @@
-package com.dhslrl321.tx.basic;
+package com.dhslrl321.tx.a1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,11 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 @DataJpaTest
-public class FirstEntityRepositoryTest {
+public class FirstRepositoryTest {
     @Autowired
-    FirstEntityRepository sut;
+    FirstRepository sut;
 
     @Test
     void name() {

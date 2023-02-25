@@ -1,4 +1,4 @@
-package com.dhslrl321.tx.basic;
+package com.dhslrl321.tx.a1;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

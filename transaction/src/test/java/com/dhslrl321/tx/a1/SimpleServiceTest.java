@@ -1,4 +1,4 @@
-package com.dhslrl321.tx.basic;
+package com.dhslrl321.tx.a1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,10 +17,10 @@ public class SimpleServiceTest {
     SimpleService sut;
 
     @Autowired
-    FirstEntityRepository firstEntityRepository;
+    FirstRepository firstRepository;
 
     @Autowired
-    SecondEntityRepository secondEntityRepository;
+    SecondRepository secondRepository;
 
     @Test
     void name() {
@@ -51,7 +51,7 @@ public class SimpleServiceTest {
     void name4() {
         assertThatThrownBy(() -> sut.first());
 
-        assertThat(firstEntityRepository.findAll().size()).isEqualTo(1);
-        assertThat(secondEntityRepository.findAll().size()).isEqualTo(0);
+        assertThat(firstRepository.findAll().size()).isEqualTo(1);
+        assertThat(secondRepository.findAll().size()).isEqualTo(0);
     }
 }
