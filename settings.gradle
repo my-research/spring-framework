@@ -6,3 +6,5 @@ include 'transaction-propagation'
 include 'profile'
 
 include 'playground'
+include 'was-basic'
+include 'application-event'
