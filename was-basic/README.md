@@ -13,5 +13,10 @@
   - gradle multi module
 - 테스트 코드
   - 단위 테스트
+    - test double
+    - mockist vs classist
   - 통합 테스트
   - testcontainers 를 이용한 통합 테스트
+- validators
+  - violation vs validation
+- application event 를 이용한 느슨한 결합
