@@ -20,3 +20,4 @@
 - validators
   - violation vs validation
 - application event 를 이용한 느슨한 결합
+  - observer pattern
