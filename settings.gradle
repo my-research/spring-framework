@@ -1,12 +1,13 @@
 rootProject.name = 'spring-framework'
 
-include 'application-event'
+
+include 'application-context'
+include 'bean'
+include 'component-scan'
+
 include 'transaction'
 include 'transaction-propagation'
-include 'profile'
-
 include 'boot-basic'
 include 'application-event'
-include 'component-scan'
 
 include 'playground'
