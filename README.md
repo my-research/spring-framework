@@ -4,9 +4,6 @@ spring 을 연구하고 실험하는 repository 입니다.
 
 기본적인 스프링의 개념부터 시작하여 깊은 부분까지 학습하고 실험하며 아카이빙합니다
 
-### References
-
-- [토비의 스프링 3.1](http://www.yes24.com/Product/Goods/7516911)
 
 # 키워드
 
@@ -16,3 +13,8 @@ spring 을 연구하고 실험하는 repository 입니다.
 - [application-event](#)
   - applicationEvent 의 tx 영향 범위
 - [synchronous & asynchronous](#),
+
+### References
+
+- [토비의 스프링 3.1](http://www.yes24.com/Product/Goods/7516911)
+- [spring basics-baeldung](https://www.baeldung.com/category/spring-boot/tag/boot-basics)
