@@ -16,4 +16,3 @@ spring 을 연구하고 실험하는 repository 입니다.
 - [application-event](#)
   - applicationEvent 의 tx 영향 범위
 - [synchronous & asynchronous](#),
-

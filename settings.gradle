@@ -5,6 +5,8 @@ include 'transaction'
 include 'transaction-propagation'
 include 'profile'
 
-include 'playground'
-include 'was-basic'
+include 'boot-basic'
 include 'application-event'
+include 'component-scan'
+
+include 'playground'
