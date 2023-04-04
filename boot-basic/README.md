@@ -10,6 +10,8 @@
   - bean 등록
 - gradle 기초
   - gradle 의존성 다운로드
+  - dependency
+    - api vs implementation
   - gradle multi module
 - 테스트 코드
   - 단위 테스트
