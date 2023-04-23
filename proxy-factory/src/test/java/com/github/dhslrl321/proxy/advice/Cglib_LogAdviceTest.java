@@ -1,5 +1,6 @@
-package com.github.dhslrl321.proxy;
+package com.github.dhslrl321.proxy.advice;
 
+import com.github.dhslrl321.proxy.LogAdvice;
 import com.github.dhslrl321.proxy.fixture.B;
 import com.github.dhslrl321.proxy.fixture.IB;
 import org.junit.jupiter.api.DisplayName;

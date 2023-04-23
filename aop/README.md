@@ -1,6 +1,25 @@
-# Bean
+# AOP
 
-- bean lifecycle
-- 종류
-  - stereotype
-  - application bean
+# AOP 용어 설명
+
+> Advice 로 어떤 로직을 적용하여 PointCut 으로 어디에 적용할지 선택한다. 그리고 Advisor 는 이 둘을 모두 알고있다
+
+### 포인트컷, PointCut
+
+- 요약: 필터링 로직
+- 어디에 부가 기능을 적용할지, 어디에 부가 기능을 적용하지 않을지 판단하는 필터링 로직
+  - 주로 클래스와 메서드 이름으로 필터링
+- 크게 둘로 나뉘어짐
+  - ClassFilter : 적용할 클래스가 맞는지
+  - MethodFilter : 적용할 메서드가 맞는지
+  - 이 둘다 true 를 반환해야지 advice 를 적용할 수 있음
+
+### 어드바이스, Advice
+
+- 프록시 로직
+- 프록시가 호출하는 부가 기능
+
+### 어드바이저, Advisor
+
+- `PointCut(1) + Advice(1)`
+- 하나의 포인트컷과 하나의 어드바이스를 가지고 있는 것
