@@ -1,4 +1,4 @@
-package com.github.dhslrl321.proxy;
+package com.github.dhslrl321.proxy.fixture;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;

@@ -1,13 +1,8 @@
 package com.github.dhslrl321.proxy.fixture;
 
-import com.github.dhslrl321.proxy.LogAdvice;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.aop.framework.ProxyFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.aop.support.AopUtils.*;
 
 @Slf4j
 public class B implements IB {
