@@ -8,6 +8,7 @@ spring 을 연구하고 실험하는 repository 입니다.
 # 키워드
 
 - [aop](#)
+- [bean](#)
 - [proxy-factory](#)
 - [application context](#)
 - [component scan, 컴포넌트 스캐닝](https://github.com/my-research/spring-framework/tree/master/component-scan)
