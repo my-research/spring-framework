@@ -31,3 +31,24 @@
 - Advice 가 알아서 MethodInterceptor 나 InvocationHandler 를 호출
 - MethodInterceptor 를 구현함
   - 얘는 cglib 의 methodInterceptor 가 아님, spring 이 제공하는 인터페이스이고 해당 인터페이스가 Advice 인터페이스를 확장하고 있음
+
+# Spring 이 지원하는 빈 후처리기
+
+```groovy
+implementation 'org.springframework.boot:spring-boot-starter-aop'
+```
+
+- aspectJ 라이브러리를 자동으로 bean 등록
+- spring boot 가 AOP 관련 클래스를 자동으로 빈 등록
+  - `@EnableAspectJAutoProxy` 를 대신 해줌
+
+### AutoProxyCreator
+
+- 자동으로 프록시를 생성해주는 BeanPostProcessor
+  - 자동으로 등록된 Advisor 들을 찾아서 프록시가 필요한 곳에 자동으로 프록시를 적용해줌
+
+# `@Aspect` 어노테이션
+
+- spring 이 편하게 aop 를 만들어줌
+
+# 프록시와 내부 호출 문제
