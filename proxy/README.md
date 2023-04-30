@@ -52,3 +52,23 @@ implementation 'org.springframework.boot:spring-boot-starter-aop'
 - spring 이 편하게 aop 를 만들어줌
 
 # 프록시와 내부 호출 문제
+
+- 내부 메서드 호출에서 문제가 발생함
+
+```java
+public class Main {
+  public void doA() {
+    log.info("hello");
+    this.innerB(); // proxy 호출 안됨
+  }
+
+  public void innerB() {
+    log.info("world");
+  }
+}
+```
+
+- 해결방법
+  - setter injection
+  - applicationContext get Bean
+  - 구조 변경
