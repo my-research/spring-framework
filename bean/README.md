@@ -1,5 +1,16 @@
 # Bean
 
+- spring 에서 singleton 으로 관리하는 객체
+- application 을 구성하는 building blocks
+- bean registry 라고 불리는 container 에 저장하고 사용한다 
+  - spring 에서는 application context 라는 곳에 저장된다
+- 이러한 application context 에 저장되면 다음과 같은 것들을 수행한다
+  - di
+  - managing lifecycles
+  - configuration managing
+  - resource loading
+  - aop
+
 # Bean Post Processor
 
 빈을 조작하고 변경할 수 있는 hooking 포인트

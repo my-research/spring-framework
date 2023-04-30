@@ -1,11 +1,11 @@
-package com.wonit.controller;
+package com.github.dhslrl321.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class HelloController {
-    public void hello(String name) throws IOException {
-        System.out.println("name = " + name);
+    public String hello(String name) throws IOException {
+        return name + ", hello ! welcome to spring";
     }
 }

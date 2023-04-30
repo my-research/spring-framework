@@ -7,16 +7,21 @@ spring 을 연구하고 실험하는 repository 입니다.
 
 # 키워드
 
-- [aop](#)
+### fundamental
+
+- [servlet-container](#)
+
+### core
+
 - [bean](#)
-- [proxy](#)
-- [application context](#)
 - [component scan, 컴포넌트 스캐닝](https://github.com/my-research/spring-framework/tree/master/component-scan)
-- [transaction propagation, 트랜잭션 전파](https://github.com/my-research/spring-framework/tree/master/transaction-propagation)
-  - 트랜잭션 전파를 통해 하나의 애플리케이션 로직에 여러 트랜잭션을 생성하거나 무시한다
+- [proxy](#)
+- [aop](#)
 - [application-event](#)
-  - applicationEvent 의 tx 영향 범위
-- [synchronous & asynchronous](#),
+
+### database
+
+- [transaction propagation, 트랜잭션 전파](https://github.com/my-research/spring-framework/tree/master/transaction-propagation)
 
 ### References
 
