@@ -38,13 +38,11 @@ public class SimpleServiceTest {
     }
 
     @Test
-    @DisplayName("롤백::선언적 트랜잭션을 사용하여 예외가 발생하면 롤백")
+    @DisplayName("롤백::proxy 를 사용하므로 내부 메서드 호출은 동작하지 않음")
     void name3() {
-        // sut 의 시작 tx 를 가져온다
         assertThatThrownBy(() -> sut.first());
 
-        // assertThat(tx.rollback).isTrue();
-        assertThat(sut.findAll().size()).isEqualTo(0);
+        assertThat(sut.findAll().size()).isEqualTo(1);
     }
 
     @Test
@@ -52,6 +50,6 @@ public class SimpleServiceTest {
         assertThatThrownBy(() -> sut.first());
 
         assertThat(firstRepository.findAll().size()).isEqualTo(1);
-        assertThat(secondRepository.findAll().size()).isEqualTo(0);
+        assertThat(secondRepository.findAll().size()).isEqualTo(1);
     }
 }

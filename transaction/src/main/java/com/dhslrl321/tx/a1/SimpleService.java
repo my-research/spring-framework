@@ -26,12 +26,12 @@ public class SimpleService {
     }
 
     public void first() {
-        second(); // rollback
-        firstRepository.save(FirstEntity.newInstance("A")); // no
+        second();
+        firstRepository.save(FirstEntity.newInstance("A")); // save
         throw new RuntimeException("예외 발생!");
     }
 
-    @Transactional
+    @Transactional // not working
     public void second() {
         secondRepository.save(new SecondEntity("Hello"));
     }

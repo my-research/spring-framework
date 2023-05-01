@@ -1,15 +1,15 @@
 rootProject.name = 'spring-framework'
 
+include 'servlet-container'
 
 include 'aop'
 include 'bean'
-include 'servlet-container'
 include 'proxy'
 include 'component-scan'
+include 'application-event'
 
+include 'jdbc'
 include 'transaction'
 include 'transaction-propagation'
-include 'boot-basic'
-include 'application-event'
 
 include 'playground'
