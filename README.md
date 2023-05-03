@@ -13,6 +13,9 @@ spring 을 연구하고 실험하는 repository 입니다.
 
 ### core
 
+- [application-context](#)
+  - [GenericApplicationContext](#)
+  - [AnnotationConfigApplicationContext](#)
 - [bean](https://github.com/my-research/spring-framework/tree/master/bean)
 - [component scan, 컴포넌트 스캐닝](https://github.com/my-research/spring-framework/tree/master/component-scan)
 - [proxy](https://github.com/my-research/spring-framework/tree/master/proxy)
@@ -22,6 +25,7 @@ spring 을 연구하고 실험하는 repository 입니다.
 ### database
 
 - [transaction propagation, 트랜잭션 전파](https://github.com/my-research/spring-framework/tree/master/transaction-propagation)
+- [jdbc](#)
 
 ### References
 
