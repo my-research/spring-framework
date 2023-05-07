@@ -27,3 +27,6 @@
 - [auto commit 모드란](#)
   - [manual commit 방법 1. set autocommit false](#)
   - [manual commit 방법 2. begin transaction](#)
+- [lock](#)
+  - [update lock](#)
+  - [select lock](#)
