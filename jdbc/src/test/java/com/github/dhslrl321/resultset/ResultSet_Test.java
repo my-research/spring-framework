@@ -1,6 +1,7 @@
 package com.github.dhslrl321.resultset;
 
 import com.github.dhslrl321.ConnectionSupports;
+import com.zaxxer.hikari.pool.HikariPool;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

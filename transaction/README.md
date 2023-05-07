@@ -1,64 +1,29 @@
-# Transaction
+# 개념
 
-- 두가지 문제 상황을 재현함
-  - 내부 Transactional 메서드 호출하면 rollback 이 되지 않는 문제
-  - 서로 다른 service 를 호출할 때 예외를 catch 해도 rollback 이 되는 상황 (RuntimeException)
+- Transaction 이란
+  - 논리적인 하나의 작업으로 성공적으로 연산을 마치쳐 영속화 하거나(commit) 실패로 인해 초기 상태로 되돌아가는 것(rollback) 을 보장한다
+  - ACID 라는 4가지 특성을 지원해야한다
+    1. 원자성 (Atomicity)
+    2. 일관성 (Consistency)
+    3. 독립성 (Isolation)
+    4. 지속성 (Durability)
+  - 위의 4가지 특성 중에서 가장 중요한 것은 **독립성**임
+    - 독립성을 strict 하게 지키기 위해서는 모든 트랜잭션을 줄세워서 하나씩 실행해야 하는데, 그게 쉽지 않음
+    - 그리고 그렇게 한다면(blocking) 성능이 너무 안좋아짐 -> 병렬 처리가 안됨
+    - 그래서 이런 특성을 조금 완화시키기 위한 방법이 바로 **고립 수준, Isolation Level**이라는 것임
 
-# Transactional
+# Transaction Isolation Level, 고립 수준
 
-- `@Transactional` 을 붙인 메서드에는 **TransactionInterceptor** 가 동작한다
-  - `PlatformTransactionManager#invokeWithinTransaction()` 이 호출
-  - invocation 에서 예외가 발생되면 `PlatformTransactionManager#completeTransactionAfterThrowing()` 이 호출
-  - `transactionInfo#rollback()` 호출
+- 4가지 레벨이 존재
+  - Read Uncommitted
+  - Read Committed
+  - Repeatable Read
+  - Serializable
+- 단계가 높아질수록 성능이 느려지지만, 확실한 일관성, 정합성이 보장됨
+- 일반적으로는 Read Committed 수준으로 사용함
 
-# proxy 관련된 문제
+### 목차
 
-```java
-@Service
-public class SomeService {
-
-  private final FirstRepository firstRepository;
-  private final SecondRepository secondRepository;
-
-  void first() {
-    second();
-    firstRepository.save(new First());
-    throw new RuntimeException();
-  }
-
-  @Transactional
-  void second() {
-    secondRepository.save(new Second());
-  }
-}
-
-class Test {
-  @Test
-  void name4() {
-    assertThatThrownBy(() -> sut.first());
-
-    assertThat(firstEntityRepository.findAll().size()).isEqualTo(1); // save
-    assertThat(secondEntityRepository.findAll().size()).isEqualTo(0); // rollback
-  }
-}
-```
-
-- @Transactional 어노테이션이 붙어있는 second 는 rollback 이 되어야 한다
-- 하지만 실제로는 rollback 이 안된다
-
-# rollback 의 동작 과정
-
-- TransactionInterceptor 에 의해서 exception 이 발생하면 `completeTransactionAfterThrowing` 를 호출함
-- TransactionManager 의 rollback 을 통해 rollback 진행
-
-# 위의 문제
-
-- first 메서드를 실행시키면 TransactionInterceptor 자체가 동작하지 않음
-
-# 이유
-
-- 메서드를 실행할 때, AOP 에 의해서 Proxy 가 생성됨
-- 해당 메서드에는 TransactionInterceptor 에게 proxy 를 생성해야 한다는 것을 명시하지 않았음
-- 결국 proxy 없이 메서드 플로우 진행
-- 이후 메서드에서 @Tx 를 만나더라도 proxy 를 만들어야한다는 아무 의심 없이 플로우가 진행됨
-- 결국 rollback 불가
+- [auto commit 모드란](#)
+  - [manual commit 방법 1. set autocommit false](#)
+  - [manual commit 방법 2. start transaction](#)
