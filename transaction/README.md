@@ -29,4 +29,4 @@
   - [manual commit 방법 2. begin transaction](#)
 - [lock](#)
   - [update lock](#)
-  - [select lock](#)
+  - [select lock(shared lock)](#)
