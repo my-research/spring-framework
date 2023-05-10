@@ -12,7 +12,8 @@ include 'component-scan'
 include 'application-event'
 
 include 'jdbc'
-include 'transaction'
-include 'transaction-propagation'
+include 'transaction:jdbc-transaction'
+include 'transaction:transaction-abstraction'
+include 'transaction:transaction-propagation'
 
 include 'playground'
