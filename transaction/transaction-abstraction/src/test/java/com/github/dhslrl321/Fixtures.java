@@ -19,15 +19,4 @@ public class Fixtures {
     public static DataSource dataSource() {
         return new DriverManagerDataSource(Fixtures.URL, Fixtures.USERNAME, Fixtures.PASSWORD);
     }
-
-    public static void initMemberTable(DataSource dataSource) {
-        try (Connection con = DataSourceUtils.getConnection(dataSource)) {
-            try (PreparedStatement ps = con.prepareStatement(SQL)) {
-                ps.execute();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Connections init 실패");
-        }
-    }
 }
