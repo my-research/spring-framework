@@ -34,7 +34,7 @@ spring 을 연구하고 실험하는 repository 입니다.
 스프링의 개념을 사용하는 케이스 스터디 프로젝트입니다
 
 - [banking system (transaction case study)](https://github.com/my-research/spring-framework/tree/master/case-study-banking-system)
-  - 은행 송금 시스템을 구현하며 비교하는 Transaction Management
+  - 송금 시스템을 구현하며 비교하는 Transaction Management 방식 비교
 
 ### References
 
