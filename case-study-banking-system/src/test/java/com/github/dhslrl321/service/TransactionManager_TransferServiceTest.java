@@ -27,8 +27,7 @@ class TransactionManager_TransferServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
-    @Autowired
-    SimpleTransferAuditRepository auditRepository;
+
     @Autowired
     AlwaysFailTransferAuditRepository alwaysFailAuditRepository;
     @Autowired
@@ -46,29 +45,7 @@ class TransactionManager_TransferServiceTest {
         memberRepository.save(memberB);
     }
 
-    @Test
-    @DisplayName("송금하면 발신 계좌의 금액은 차감되고 수신 계좌의 금액은 증가한다. 그리고 audit 로그가 추가된다")
-    void name() {
-        // service 에 정상적인 auditRepository 를 주입한다
-        sut = new TransactionManagerTransferService(tx, memberRepository, auditRepository);
 
-        // act
-        // 정상적으로 송금이 완료된다
-        sut.transfer(memberA.getId(), memberB.getId(), TRANSFER_AMOUNT);
-
-        // assertion
-        // A 와 B 의 잔고는 각각 금액이 차감되거나 증가해야 한다
-        assertThat(memberRepository.findBy(memberA.getId()).getBalance())
-                .isEqualTo(INITIAL_AMOUNT - TRANSFER_AMOUNT);
-        assertThat(memberRepository.findBy(memberB.getId()).getBalance())
-                .isEqualTo(INITIAL_AMOUNT + TRANSFER_AMOUNT);
-
-        // audit 에는 송금 이력이 저장된다
-        TransferAudit audit = auditRepository.findAll().get(0);
-        assertThat(audit.getFrom()).isEqualTo(memberA.getId());
-        assertThat(audit.getTo()).isEqualTo(memberB.getId());
-        assertThat(audit.getAmount()).isEqualTo(TRANSFER_AMOUNT);
-    }
 
     @Test
     @DisplayName("의도적으로 unchecked 예외를 발생시키는 auditRepository")

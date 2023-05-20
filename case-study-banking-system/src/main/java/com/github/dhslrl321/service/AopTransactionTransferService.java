@@ -1,5 +1,6 @@
 package com.github.dhslrl321.service;
 
+import com.github.dhslrl321.domain.audit.AlwaysFailTransferAuditRepository;
 import com.github.dhslrl321.domain.audit.TransferAudit;
 import com.github.dhslrl321.domain.audit.TransferAuditRepository;
 import com.github.dhslrl321.domain.member.Member;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AopTransactionTransferService implements TransferService {
 
     private final MemberRepository memberRepository;
-    private final TransferAuditRepository auditRepository;
+    private final AlwaysFailTransferAuditRepository auditRepository;
 
     @Override
     @Transactional
