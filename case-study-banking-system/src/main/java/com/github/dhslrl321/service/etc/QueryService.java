@@ -2,8 +2,8 @@ package com.github.dhslrl321.service.etc;
 
 import com.github.dhslrl321.domain.audit.TransferAudit;
 import com.github.dhslrl321.domain.audit.SimpleTransferAuditRepository;
-import com.github.dhslrl321.domain.member.Member;
-import com.github.dhslrl321.domain.member.MemberRepository;
+import com.github.dhslrl321.domain.account.Account;
+import com.github.dhslrl321.domain.account.AccountRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryService {
 
-    private final MemberRepository memberRepository;
+    private final AccountRepository accountRepository;
     private final SimpleTransferAuditRepository auditRepository;
 
-    public List<Member> members() {
-        return memberRepository.findAll();
+    public List<Account> members() {
+        return accountRepository.findAll();
     }
 
     public List<TransferAudit> audits() {

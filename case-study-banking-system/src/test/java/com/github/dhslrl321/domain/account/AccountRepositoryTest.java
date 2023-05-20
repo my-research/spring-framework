@@ -1,4 +1,4 @@
-package com.github.dhslrl321.domain.member;
+package com.github.dhslrl321.domain.account;
 
 import com.github.dhslrl321.supports.DataSourceConfigs;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,24 +10,24 @@ import javax.sql.DataSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class MemberRepositoryTest {
+class AccountRepositoryTest {
 
-    MemberRepository sut;
+    AccountRepository sut;
 
     @BeforeEach
     void setUp() {
         DataSource dataSource = DataSourceConfigs.hikariConnectionPoolDataSource();
-        sut = new MemberRepository(dataSource);
+        sut = new AccountRepository(dataSource);
     }
 
     @Test
     @DisplayName("pk 제약조건")
     void name() {
-        Member member = Member.instantiate(1, "jang", 100);
+        Account account = Account.instantiate(1, "jang", 100);
 
-        sut.save(member);
+        sut.save(account);
 
-        assertThatThrownBy(() -> sut.save(member))
+        assertThatThrownBy(() -> sut.save(account))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("이미 존재하는 유저");
     }
@@ -35,10 +35,10 @@ class MemberRepositoryTest {
     @Test
     @DisplayName("조회")
     void name2() {
-        Member member = Member.instantiate(1, "jang", 100);
+        Account account = Account.instantiate(1, "jang", 100);
 
-        sut.save(member);
-        Member actual = sut.findBy(1);
+        sut.save(account);
+        Account actual = sut.findBy(1);
 
         assertThat(actual.getId()).isEqualTo(1);
     }
@@ -53,14 +53,14 @@ class MemberRepositoryTest {
 
     @Test
     void name4() {
-        Member member = Member.instantiate(1, "jang", 1000);
-        sut.save(member);
+        Account account = Account.instantiate(1, "jang", 1000);
+        sut.save(account);
 
-        member.minus(100);
-        sut.update(member);
+        account.minus(100);
+        sut.update(account);
 
-        Member actual = sut.findBy(1);
+        Account actual = sut.findBy(1);
 
-        assertThat(member).isEqualTo(actual);
+        assertThat(account).isEqualTo(actual);
     }
 }

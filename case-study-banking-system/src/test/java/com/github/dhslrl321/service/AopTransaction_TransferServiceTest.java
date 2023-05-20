@@ -2,14 +2,11 @@ package com.github.dhslrl321.service;
 
 import com.github.dhslrl321.BankingApp;
 import com.github.dhslrl321.domain.audit.AlwaysFailTransferAuditRepository;
-import com.github.dhslrl321.domain.audit.SimpleTransferAuditRepository;
-import com.github.dhslrl321.domain.audit.TransferAudit;
-import com.github.dhslrl321.domain.member.Member;
-import com.github.dhslrl321.domain.member.MemberRepository;
+import com.github.dhslrl321.domain.account.Account;
+import com.github.dhslrl321.domain.account.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -26,21 +23,21 @@ class AopTransaction_TransferServiceTest {
     public static final int TRANSFER_AMOUNT = 9_000;
 
     @Autowired
-    MemberRepository memberRepository;
+    AccountRepository accountRepository;
 
     @Autowired
     AlwaysFailTransferAuditRepository alwaysFailAuditRepository;
 
-    Member memberA;
-    Member memberB;
+    Account accountA;
+    Account accountB;
 
     @BeforeEach
     void setUp() {
-        memberA = Member.newOne("jang", 100_000);
-        memberB  = Member.newOne("heo", 100_000);
+        accountA = Account.newOne("jang", 100_000);
+        accountB = Account.newOne("heo", 100_000);
 
-        memberRepository.save(memberA);
-        memberRepository.save(memberB);
+        accountRepository.save(accountA);
+        accountRepository.save(accountB);
     }
 
     @Test
@@ -48,12 +45,12 @@ class AopTransaction_TransferServiceTest {
     void name2() {
         // act
         // 정상적으로 송금이 완료된다
-        assertThatThrownBy(() -> sut.transfer(memberA.getId(), memberB.getId(), TRANSFER_AMOUNT))
+        assertThatThrownBy(() -> sut.transfer(accountA.getId(), accountB.getId(), TRANSFER_AMOUNT))
                 .isInstanceOf(RuntimeException.class);
 
         // assert
         // member A 와 B 의 잔고는 처음 그대로여야 한다
-        assertThat(memberRepository.findBy(memberA.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
-        assertThat(memberRepository.findBy(memberB.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
+        assertThat(accountRepository.findBy(accountA.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
+        assertThat(accountRepository.findBy(accountB.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
     }
 }

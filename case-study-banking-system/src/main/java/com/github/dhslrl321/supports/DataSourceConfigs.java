@@ -18,8 +18,8 @@ public class DataSourceConfigs {
 
         try {
             Connection connection = dataSource.getConnection();
-            connection.prepareStatement("DROP TABLE IF EXISTS members CASCADE; " +
-                            "CREATE TABLE members (id bigint, name varchar(25), balance bigint, primary key (id));")
+            connection.prepareStatement("DROP TABLE IF EXISTS accounts CASCADE; " +
+                            "CREATE TABLE accounts (id bigint, name varchar(25), balance bigint, primary key (id));")
                     .execute();
 
             connection.prepareStatement("DROP TABLE IF EXISTS transfer_audits CASCADE; " +

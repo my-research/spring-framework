@@ -2,8 +2,8 @@ package com.github.dhslrl321.controller;
 
 import com.github.dhslrl321.domain.audit.TransferAudit;
 import com.github.dhslrl321.domain.audit.SimpleTransferAuditRepository;
-import com.github.dhslrl321.domain.member.Member;
-import com.github.dhslrl321.domain.member.MemberRepository;
+import com.github.dhslrl321.domain.account.Account;
+import com.github.dhslrl321.domain.account.AccountRepository;
 import com.github.dhslrl321.supports.Serializer;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +20,12 @@ import java.util.Map;
 public class QueryController {
 
     private final DataSource dataSource;
-    private final MemberRepository memberRepository;
+    private final AccountRepository accountRepository;
     private final SimpleTransferAuditRepository auditRepository;
 
     @GetMapping(value = "/members", produces = "application/json")
     public ResponseEntity<String> members() {
-        List<Member> all = memberRepository.findAll();
+        List<Account> all = accountRepository.findAll();
         String serialized = Serializer.serialize(all);
         return ResponseEntity.ok(serialized);
     }

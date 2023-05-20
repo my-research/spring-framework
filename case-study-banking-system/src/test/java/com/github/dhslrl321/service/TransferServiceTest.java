@@ -1,18 +1,16 @@
 package com.github.dhslrl321.service;
 
 import com.github.dhslrl321.BankingApp;
-import com.github.dhslrl321.domain.audit.AlwaysFailTransferAuditRepository;
 import com.github.dhslrl321.domain.audit.SimpleTransferAuditRepository;
 import com.github.dhslrl321.domain.audit.TransferAudit;
-import com.github.dhslrl321.domain.member.Member;
-import com.github.dhslrl321.domain.member.MemberRepository;
+import com.github.dhslrl321.domain.account.Account;
+import com.github.dhslrl321.domain.account.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,23 +25,23 @@ public class TransferServiceTest {
     TransactionTemplateTransferService sut;
 
     @Autowired
-    MemberRepository memberRepository;
+    AccountRepository accountRepository;
     @Autowired
     SimpleTransferAuditRepository auditRepository;
 
     @Autowired
     PlatformTransactionManager tx;
 
-    Member memberA;
-    Member memberB;
+    Account accountA;
+    Account accountB;
 
     @BeforeEach
     void setUp() {
-        memberA = Member.newOne("jang", 100_000);
-        memberB  = Member.newOne("heo", 100_000);
+        accountA = Account.newOne("jang", 100_000);
+        accountB = Account.newOne("heo", 100_000);
 
-        memberRepository.save(memberA);
-        memberRepository.save(memberB);
+        accountRepository.save(accountA);
+        accountRepository.save(accountB);
     }
 
     @Test
@@ -52,19 +50,19 @@ public class TransferServiceTest {
 
         // act
         // 정상적으로 송금이 완료된다
-        sut.transfer(memberA.getId(), memberB.getId(), TRANSFER_AMOUNT);
+        sut.transfer(accountA.getId(), accountB.getId(), TRANSFER_AMOUNT);
 
         // assertion
         // A 와 B 의 잔고는 각각 금액이 차감되거나 증가해야 한다
-        assertThat(memberRepository.findBy(memberA.getId()).getBalance())
+        assertThat(accountRepository.findBy(accountA.getId()).getBalance())
                 .isEqualTo(INITIAL_AMOUNT - TRANSFER_AMOUNT);
-        assertThat(memberRepository.findBy(memberB.getId()).getBalance())
+        assertThat(accountRepository.findBy(accountB.getId()).getBalance())
                 .isEqualTo(INITIAL_AMOUNT + TRANSFER_AMOUNT);
 
         // audit 에는 송금 이력이 저장된다
         TransferAudit audit = auditRepository.findAll().get(0);
-        assertThat(audit.getFrom()).isEqualTo(memberA.getId());
-        assertThat(audit.getTo()).isEqualTo(memberB.getId());
+        assertThat(audit.getFrom()).isEqualTo(accountA.getId());
+        assertThat(audit.getTo()).isEqualTo(accountB.getId());
         assertThat(audit.getAmount()).isEqualTo(TRANSFER_AMOUNT);
     }
 }

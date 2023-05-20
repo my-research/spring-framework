@@ -18,7 +18,9 @@ public class TransferController {
 
     @PostMapping(value = "/transfers")
     public ResponseEntity<Map<String, String>> join(@RequestBody Map<String, Long> body) {
+
         service.transfer(body.get("fromId"), body.get("toId"), body.get("amount"));
+
         return ResponseEntity.ok(Map.of(
                 "status", "success",
                 "requestedAt", LocalDateTime.now().toString())

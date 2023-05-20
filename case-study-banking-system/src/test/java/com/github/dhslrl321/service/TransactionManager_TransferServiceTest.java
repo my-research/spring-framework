@@ -2,18 +2,14 @@ package com.github.dhslrl321.service;
 
 import com.github.dhslrl321.BankingApp;
 import com.github.dhslrl321.domain.audit.AlwaysFailTransferAuditRepository;
-import com.github.dhslrl321.domain.audit.SimpleTransferAuditRepository;
-import com.github.dhslrl321.domain.audit.TransferAudit;
-import com.github.dhslrl321.domain.member.Member;
-import com.github.dhslrl321.domain.member.MemberRepository;
+import com.github.dhslrl321.domain.account.Account;
+import com.github.dhslrl321.domain.account.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,23 +22,23 @@ class TransactionManager_TransferServiceTest {
     TransactionManagerTransferService sut;
 
     @Autowired
-    MemberRepository memberRepository;
+    AccountRepository accountRepository;
 
     @Autowired
     AlwaysFailTransferAuditRepository alwaysFailAuditRepository;
     @Autowired
     PlatformTransactionManager tx;
 
-    Member memberA;
-    Member memberB;
+    Account accountA;
+    Account accountB;
 
     @BeforeEach
     void setUp() {
-        memberA = Member.newOne("jang", 100_000);
-        memberB  = Member.newOne("heo", 100_000);
+        accountA = Account.newOne("jang", 100_000);
+        accountB = Account.newOne("heo", 100_000);
 
-        memberRepository.save(memberA);
-        memberRepository.save(memberB);
+        accountRepository.save(accountA);
+        accountRepository.save(accountB);
     }
 
 
@@ -52,16 +48,16 @@ class TransactionManager_TransferServiceTest {
     void name2() {
         // arrange
         // service 에 항상 예외를 던지는 auditRepository 를 주입한다
-        sut = new TransactionManagerTransferService(tx, memberRepository, alwaysFailAuditRepository);
+        sut = new TransactionManagerTransferService(tx, accountRepository, alwaysFailAuditRepository);
 
         // act
         // 정상적으로 송금이 완료된다
-        assertThatThrownBy(() -> sut.transfer(memberA.getId(), memberB.getId(), TRANSFER_AMOUNT))
+        assertThatThrownBy(() -> sut.transfer(accountA.getId(), accountB.getId(), TRANSFER_AMOUNT))
                 .isInstanceOf(RuntimeException.class);
 
         // assert
         // member A 와 B 의 잔고는 처음 그대로여야 한다
-        assertThat(memberRepository.findBy(memberA.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
-        assertThat(memberRepository.findBy(memberB.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
+        assertThat(accountRepository.findBy(accountA.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
+        assertThat(accountRepository.findBy(accountB.getId()).getBalance()).isEqualTo(INITIAL_AMOUNT);
     }
 }

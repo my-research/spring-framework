@@ -12,13 +12,15 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-public class JoinMemberController {
+public class OpenAccountController {
     private final JoinMemberService service;
 
-    @PostMapping("/members")
-    public ResponseEntity<Map<String, String>> join(@RequestBody Map<String, String> body) {
+    @PostMapping("/accounts")
+    public ResponseEntity<Map<String, String>> open(@RequestBody Map<String, String> body) {
         String name = body.get("name");
-        service.join(name);
+
+        service.openNewAccount(name);
+
         return ResponseEntity.ok(Map.of(
                 "status", "success",
                 "requestedAt", LocalDateTime.now().toString())

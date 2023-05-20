@@ -1,4 +1,4 @@
-package com.github.dhslrl321.domain.member;
+package com.github.dhslrl321.domain.account;
 
 import com.github.dhslrl321.supports.IdGenerator;
 import lombok.AccessLevel;
@@ -9,10 +9,10 @@ import lombok.Getter;
 @Getter
 @EqualsAndHashCode
 @AllArgsConstructor(access = AccessLevel.PROTECTED, staticName = "instantiate")
-public class Member {
+public class Account {
 
-    public static Member newOne(String name, long balance) {
-        return new Member(IdGenerator.gen(), name, balance);
+    public static Account newOne(String name, long balance) {
+        return new Account(IdGenerator.gen(), name, balance);
     }
 
     private final long id;
