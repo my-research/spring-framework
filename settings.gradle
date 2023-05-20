@@ -15,6 +15,7 @@ include 'jdbc'
 include 'transaction:jdbc-transaction'
 include 'transaction:transaction-abstraction'
 include 'transaction:transaction-propagation'
-include 'transaction:transaction-template'
+
+include 'case-study-banking-system'
 
 include 'playground'
