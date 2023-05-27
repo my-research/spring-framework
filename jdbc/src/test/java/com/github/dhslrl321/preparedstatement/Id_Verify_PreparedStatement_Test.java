@@ -1,6 +1,5 @@
 package com.github.dhslrl321.preparedstatement;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import static com.github.dhslrl321.ConnectionSupports.connectionWith;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
@@ -28,8 +26,8 @@ public class Id_Verify_PreparedStatement_Test {
 
     @Test
     @DisplayName("auto_increment 시 생성된 id 를 반환받을 수 있다")
-    void name() throws Exception {
-        PreparedStatement sut = connection.prepareStatement(SQL, RETURN_GENERATED_KEYS);
+    void 생성된_id_를_반환받을_수_있는것을_검증() throws Exception {
+        sut = connection.prepareStatement(SQL, RETURN_GENERATED_KEYS);
 
         sut.executeUpdate();
 
