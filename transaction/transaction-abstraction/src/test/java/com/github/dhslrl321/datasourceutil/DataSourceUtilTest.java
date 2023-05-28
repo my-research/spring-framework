@@ -1,6 +1,7 @@
 package com.github.dhslrl321.datasourceutil;
 
 import com.github.dhslrl321.Fixtures;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -11,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 import static com.github.dhslrl321.Fixtures.SQL;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * DataSourceUtil
@@ -43,6 +45,7 @@ public class DataSourceUtilTest {
 
         ResultSet rs = connection.prepareStatement("SELECT count(*) FROM member").executeQuery();
         rs.next();
-        int anInt = rs.getInt(1);
+
+        assertThat(rs.getInt(1)).isEqualTo(0);
     }
 }
