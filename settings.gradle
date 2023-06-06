@@ -11,7 +11,11 @@ include 'proxy'
 include 'component-scan'
 include 'application-event'
 
-include 'jdbc'
+include 'jdbc:jdbc-core'
+include 'jdbc:jdbc-template'
+
+include 'paging'
+
 include 'transaction:jdbc-transaction'
 include 'transaction:transaction-abstraction'
 include 'transaction:transaction-propagation'
