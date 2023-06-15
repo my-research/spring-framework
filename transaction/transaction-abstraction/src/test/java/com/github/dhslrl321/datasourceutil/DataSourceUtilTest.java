@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 
 import static com.github.dhslrl321.Fixtures.SQL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * DataSourceUtil
@@ -47,5 +48,15 @@ public class DataSourceUtilTest {
         rs.next();
 
         assertThat(rs.getInt(1)).isEqualTo(0);
+    }
+
+    @Test
+    void name2() throws Exception {
+
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+
+        ResultSet rs = connection.prepareStatement("SELECT count(*) FROM member").executeQuery();
+
+        assertThatThrownBy(() -> rs.getInt(1));
     }
 }
