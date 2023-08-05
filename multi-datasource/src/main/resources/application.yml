@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/dhslrl321-mysql?useSSL=false
+    username: dhslrl321-mysql
+    password: dhslrl321-mysql

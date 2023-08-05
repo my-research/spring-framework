@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:latest
+    command: --init-file /docker-entrypoint-initdb.d/init-mysql.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: dhslrl321-mysql
+      MYSQL_DATABASE: dhslrl321-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./schema/init-mysql.sql:/docker-entrypoint-initdb.d/init-mysql.sql
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: myp
+      POSTGRES_USERNAME: myp
+      POSTGRES_DB: myp
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./schema/init-psql.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_data:
+  postgres_data:
