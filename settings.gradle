@@ -14,6 +14,8 @@ include 'application-event'
 include 'jdbc:jdbc-core'
 include 'jdbc:jdbc-template'
 
+include 'multi-datasource'
+
 include 'paging'
 
 include 'transaction:jdbc-transaction'
