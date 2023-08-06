@@ -24,4 +24,8 @@ include 'transaction:transaction-propagation'
 
 include 'case-study-banking-system'
 
+include 'kafka'
+include 'kafka:basic'
+include 'kafka:multi-kafka-broker'
+
 include 'playground'

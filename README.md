@@ -29,6 +29,11 @@ spring 을 연구하고 실험하는 repository 입니다.
   - [transaction abstraction, 트랜잭션 추상화](https://github.com/my-research/spring-framework/tree/master/transaction-propagation)
   - [transaction propagation, 트랜잭션 전파](https://github.com/my-research/spring-framework/tree/master/transaction-propagation)
 
+### kafka
+
+- [kafka](#)
+- [kafka multi broker](#)
+
 ## Case Study
 
 스프링의 개념을 사용하는 케이스 스터디 프로젝트입니다
