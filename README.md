@@ -31,8 +31,8 @@ spring 을 연구하고 실험하는 repository 입니다.
 
 ### kafka
 
-- [kafka](#)
-- [kafka multi broker](#)
+- [kafka](https://github.com/my-research/spring-framework/tree/master/kafka)
+- [kafka multi broker]([#](https://github.com/my-research/spring-framework/tree/master/kafka/multi-kafka-broker))
 
 ## Case Study
 
