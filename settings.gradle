@@ -26,6 +26,6 @@ include 'case-study-banking-system'
 
 include 'kafka'
 include 'kafka:basic'
-include 'kafka:multi-kafka-broker'
+include 'kafka:testing'
 
 include 'playground'

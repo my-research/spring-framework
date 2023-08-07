@@ -1,4 +1,4 @@
-package com.github.dhslrl321;
+package com.github.dhslrl321.message;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class HelloMessageProducer {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, HelloMessage> kafkaTemplate;
 
     public void sendMessage(String message) {
         log.info("[KAFKA] producer message publish [{}]", message);
-        kafkaTemplate.send("my-test", message);
+        kafkaTemplate.send("my-test", HelloMessage.of(message));
     }
 
 }
