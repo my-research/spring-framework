@@ -1,2 +1,11 @@
-package com.github.dhslrl321.aop;public class EntryPoint {
+package com.github.dhslrl321.aop;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EntryPoint {
+    public static void main(String[] args) {
+        SpringApplication.run(EntryPoint.class, args);
+    }
 }

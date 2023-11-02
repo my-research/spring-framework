@@ -1,4 +1,4 @@
-package com.github.dhslrl321.aop;
+package com.github.dhslrl321.aop.core;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
