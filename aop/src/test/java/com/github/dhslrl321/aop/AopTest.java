@@ -1,7 +1,6 @@
 package com.github.dhslrl321.aop;
 
-import com.github.dhslrl321.aop.aspect.LogAspectV1;
-import com.github.dhslrl321.aop.aspect.LogAspectV2;
+import com.github.dhslrl321.aop.aspect.MyAspectV3;
 import com.github.dhslrl321.aop.core.OrderRepository;
 import com.github.dhslrl321.aop.core.OrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Slf4j
 //@Import(LogAspectV1.class)
-@Import(LogAspectV2.class)
+//@Import(LogAspectV2.class)
+@Import(MyAspectV3.class)
 @SpringBootTest
 public class AopTest {
     @Autowired
