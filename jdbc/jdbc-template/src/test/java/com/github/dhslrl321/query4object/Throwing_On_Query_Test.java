@@ -37,6 +37,6 @@ public class Throwing_On_Query_Test {
     }
 
     private static Account instantiate(ResultSet rs, int rowNum) throws SQLException {
-        return Account.loadFromDb(rs.getLong(1), rs.getString(2), rs.getLong(3));
+            return Account.loadFromDb(rs.getLong(1), rs.getString(2), rs.getLong(3));
     }
 }
