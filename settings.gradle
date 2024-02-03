@@ -23,6 +23,7 @@ include 'transaction:transaction-abstraction'
 include 'transaction:transaction-propagation'
 
 include 'case-study-banking-system'
+include 'case-study-aop-failure-handling'
 
 include 'kafka'
 include 'kafka:basic'
